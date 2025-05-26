@@ -42,6 +42,34 @@ Este projeto adota a **Arquitetura Limpa (Clean Architecture)** para promover um
 - **Application**: Orquestra os casos de uso e a lógica da aplicação.
 - **Infrastructure**: Lida com detalhes externos como frameworks, banco de dados, e APIs externas.
 
+```
+├── application/                        # Camada de Aplicação (Regras de Negócio da Aplicação)
+│   ├── usecase/                        # Casos de Uso (interactors)
+│   │   └── impl/                       # Implementações dos Casos de Uso
+│   ├── port/                           # Portas (interfaces) para comunicação entre camadas
+│   │   ├── in/                         # Portas de Entrada (driven by services/use cases)
+│   │   └── out/                        # Portas de Saída (driving repositories, external services)
+│   └── service/                        # Serviços de aplicação (orquestradores de casos de uso, se necessário)
+│
+├── domain/                             # Camada de Domínio (Regras de Negócio da Empresa)
+│   ├── model/                          # Entidades e Objetos de Valor (Value Objects)
+│   └── exception/                      # Exceções de domínio
+│
+├── infrastructure/                     # Camada de Infraestrutura (Detalhes de Implementação)
+│   ├── adapter/                        # Adaptadores para o mundo externo
+│   │   ├── in/                         # Adaptadores de Entrada (ex: Controllers REST)
+│   │   │   └── controller/
+│   │   └── out/                        # Adaptadores de Saída (ex: Repositórios, Clientes HTTP)
+│   │       ├── persistence/            # Persistência (ex: JPA Repositories)
+│   │       │   ├── entity/             # Entidades de banco de dados (se diferentes das de domínio)
+│   │       │   └── repository/         # Implementações dos Repositórios
+│   │       └── client/                 # Clientes para serviços externos
+│   ├── config/                         # Configurações do Spring Boot, Beans, Segurança, etc.
+│   └── security/                       # Configurações específicas de segurança (se complexas)
+│
+└── MainApplication.java                # Classe principal do Spring Boot
+```
+
 Consulte a seção [Estrutura do Projeto](#estrutura-do-projeto) para mais detalhes sobre a organização dos pacotes.
 
 ## Pré-requisitos

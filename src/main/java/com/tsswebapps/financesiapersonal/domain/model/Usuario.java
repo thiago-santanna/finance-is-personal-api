@@ -1,4 +1,10 @@
 package com.tsswebapps.financesiapersonal.domain.model;
 
-public class Usuario {
+public record Usuario(
+        Long id,
+        String nome,
+        String email,
+        String senha,
+        String telefone
+) {
 }
