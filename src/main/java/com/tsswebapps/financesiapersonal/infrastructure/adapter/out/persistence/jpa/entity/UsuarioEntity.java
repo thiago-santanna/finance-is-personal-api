@@ -1,4 +1,4 @@
-package com.tsswebapps.financesiapersonal.infrastructure.adapter.out.persistence.entity;
+package com.tsswebapps.financesiapersonal.infrastructure.adapter.out.persistence.jpa.entity;
 
 import java.util.Objects;
 

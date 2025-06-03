@@ -1,13 +1,9 @@
-package com.tsswebapps.financesiapersonal.infrastructure.adapter.out.persistence.entity;
+package com.tsswebapps.financesiapersonal.infrastructure.adapter.out.persistence.jpa.entity;
 
 import java.util.Objects;
 
-import com.tsswebapps.financesiapersonal.domain.model.TipoOperacao;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,8 +12,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "operacao")
-public class OperacaoEntity {
+@Table(name = "debito")
+public class DebitoEntity {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,18 +26,14 @@ public class OperacaoEntity {
         @Column(nullable = false, length = 255)
         private String descricao;
 
-        @Enumerated(EnumType.STRING)
-        @Column(name = "tipo_operacao", nullable = false)
-        private TipoOperacao tipoOperacao;
-
-        public OperacaoEntity() {
+        // Construtor padrão exigido pelo JPA
+        public DebitoEntity() {
         }
 
-        public OperacaoEntity(Long id, UsuarioEntity usuario, String descricao, TipoOperacao tipoOperacao) {
+        public DebitoEntity(Long id, UsuarioEntity usuario, String descricao) {
                 this.id = id;
                 this.usuario = usuario;
                 this.descricao = descricao;
-                this.tipoOperacao = tipoOperacao;
         }
 
         public Long getId() {
@@ -68,19 +60,11 @@ public class OperacaoEntity {
                 this.descricao = descricao;
         }
 
-        public TipoOperacao getTipoOperacao() {
-                return tipoOperacao;
-        }
-
-        public void setTipoOperacao(TipoOperacao tipoOperacao) {
-                this.tipoOperacao = tipoOperacao;
-        }
-
         @Override
         public boolean equals(Object o) {
                 if (this == o) return true;
                 if (o == null || getClass() != o.getClass()) return false;
-                OperacaoEntity that = (OperacaoEntity) o;
+                DebitoEntity that = (DebitoEntity) o;
                 return Objects.equals(id, that.id);
         }
 
@@ -91,11 +75,10 @@ public class OperacaoEntity {
 
         @Override
         public String toString() {
-                return "OperacaoEntity{" +
+                return "DebitoEntity{" +
                         "id=" + id +
                         ", usuario=" + (usuario != null ? usuario.getId() : "null") + // Evita recursão e mostra ID do usuário
                         ", descricao='" + descricao + '\'' +
-                        ", tipoOperacao=" + tipoOperacao +
                         '}';
         }
 }
