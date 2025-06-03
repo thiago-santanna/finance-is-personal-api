@@ -4,7 +4,6 @@ import com.tsswebapps.financesiapersonal.application.dto.UsuarioResponse;
 import com.tsswebapps.financesiapersonal.application.mapper.UsuarioResponseMapper;
 import com.tsswebapps.financesiapersonal.application.port.out.CadastrarUsuarioRepositoryPort;
 import com.tsswebapps.financesiapersonal.domain.model.Usuario;
-import com.tsswebapps.financesiapersonal.infrastructure.adapter.out.persistence.jpa.entity.UsuarioEntity;
 import com.tsswebapps.financesiapersonal.infrastructure.adapter.out.persistence.jpa.repository.jparepository.UsuarioRepository;
 import com.tsswebapps.financesiapersonal.infrastructure.mapper.UsuarioEntityMapper;
 import org.springframework.stereotype.Repository;
